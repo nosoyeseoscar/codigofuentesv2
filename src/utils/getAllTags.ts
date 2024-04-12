@@ -41,8 +41,8 @@ export const getTaxonomy = async (collection: string, name: string) => {
 
 export const getSinglePage = async (collection: any) => {
   const allPage = await getCollection(collection);
-  const removeIndex = allPage.filter((data) => data.id.match(/^(?!-)/));
-  const removeDrafts = removeIndex.filter((data) => !data.data.draft);
+  const removeIndex = allPage.filter((data:any) => data.id.match(/^(?!-)/));
+  const removeDrafts = removeIndex.filter((data:any) => !data.data.draft);
   return removeDrafts;
 };
 

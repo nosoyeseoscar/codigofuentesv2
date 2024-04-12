@@ -1,0 +1,89 @@
+---
+title: "Compartir estados entre componentes en Astro"
+description: "La manera más fácil: usando NanoStore"
+pubDate: "2024-04-15T20:44:05.121Z"
+heroImage: "/blogImages/002-AstroState.webp"
+categories: ['Astro', 'JavaScript', 'Desarrollo Web']
+tags: ['Astro', 'JS', 'Tips', 'NanoStore']
+author: ['Oscar Fuentes']
+---
+
+## La manera más fácil es: usando NanoStore.
+
+Si no quieres perder tiempo y esfuerzo, usa NanoStore. Es una dependencia pequeña, agnóstica y sencilla que evitará que instales otras dependencias “pesadas” como React/Preact por una manera de manejar estados generales entre componentes.
+
+Se instala así con NPM
+```console
+npm install nanostores
+```
+
+Creas un archivo llamado store.js en el directorio src (src/store.js) y lo llenas así
+```js
+import { atom } from 'nanostores';
+
+export const isVisible= atom(false);
+```
+
+En mi caso una variable booleana. Así que si ocupas más variables pues las agregas y exportas.
+
+Posteriormente, importas dicha variable en cada uno de los componentes que la vayan a usar dentro de las etiquetas script:
+```js
+  import { isVisible} from '../store.js';
+
+  // cambia valores del store con .set()
+      isVisible.set(true);
+```
+Y para escuchar los cambios en otro componente de la variable usas:
+```js
+import { isVisible} from '../store.js';
+
+isVisible.subscribe( visible => {
+    if (visible) {
+      document.getElementById('dialog').style.display = 'block';
+    } else {
+      document.getElementById('dialog').style.display = 'none';
+    }
+  })
+
+```
+En el caso anterior al cambiar la variable isVisible un elemento con el id “#dialog” aparece y desaparece según el caso. Esa variable es alterada en otro componente mediante el metodo set.
+
+Y listo, con eso te quitas de muchos problemas, con código sencillo y fácil de entender. 
+
+Si quieres saber el porqué llegué a esta conclusión tan obvia, y de que es la mejor opción puedes seguir leyendo, sino nos vemos en otro post. 
+
+Saludos.
+
+Veo que te gusta leer. Ok, te cuento. Muchos dirán: ¿Oye, porqué haces un post que puedo buscar fácilmente en la documentación de Astro?
+
+Permíteme explicarte el contexto y porqué llegué a la situación más obvia, calma, siéntate y deja que te cuente mi historia. 
+
+Como todo desarrollador que va iniciando hacer un portfolio o portafolio es casi obligatorio ( dato curioso: ambas acepciones son correctas). Por lo tanto me puse a realizarlo, y cómo no, use Astro.
+
+La decisión de usar éste Framework es por las ventajas que ofrece en sitios estáticos. Además, Midudev(link al video) lo sugiere, así que no la pensé mucho y para no caer en “parálisis por sobre análisis”  puse manos a la obra. 
+
+Mi idea era usar lo más Vanilla JavaScript que se pueda, al final de cuentas quería hacer un sitio ligero, rápido de desplegar y que tuviera un “feel” minimalista. Por lo tanto, no quería usar Frameworks (salvo Astro y Tailwind) y no meter “bundle code” que no fuera a usar, como siempre sucede con alguna instalación en NPM.
+
+Todo iba bien hasta que decidí poner un efecto “sticky” a la barra superior de navegación del portafolio y que cuando el Hero no fuera visible, en la barra superior apareciera mi nombre y una pequeña foto similar a la que tenía de entrada. 
+
+Como había “componetizado” la mayoría de mis secciones del portafolio, necesitaba que en el Hero al ya no verse, alterara alguna bandera “global” diciendo “No me ves” y que cuando esa variable cambiara, apareciera y desapareciera una parte de la NavBar.
+
+Suena sencillo, sobre todo si vienes de React, un estado en el componente padre, lo pasas al hijo, se altera, se renderiza y ahora el otro hijo presenta o no una parte de él. Sencillo, ¿no?
+
+Pues no, Astro aunque puede parecerse a React, no maneja estados o “hooks” para esto, o cuando menos no lo encontré de manera “nativa” y sin buscar en miles de datos inútiles. Busqué en Google, pregunté a ChatGPT, busqué en la documentación (como buen desarrollador, siempre es la última opción) y poco o nada. 
+
+¿Y checaste en StackOverflow? Sí, de hecho, y es donde más o menos encontré algo. Pero lo que decía era básicamente: “Sí, se puede compartir estados entre componentes usando Vanilla JS”. Creas un evento personalizado, y mediante ese evento compartes una variable y lo usas entre componentes.
+
+¿Fácil? Pues no, intenté hacerlo pero mi nivel de JS no es tan alto y no pude. El usuario te ponía un repositorio con proyecto completo donde usaba ésta técnica. Pero en serio, no me iba a poner a leer componentes y librerías custom para hacer algo que debería ser sencillo. Y menos clonar el repositorio y probarlo local, ya había perdido varias horas en hacer ésto.
+
+Probé más opciones y nada. Pregunté a Gemini y me dijo lo obvio: usa NanoStore. Es lo que recomienda la documentación y es una dependencia pequeña. Ya había leído esa opción pero siempre estaba acompañada de alguna otra librería o framework como React/Preact. Sin embargo, encontré después en la documentación oficial como usarla sin necesidad de alguna otra librería/Framework. 
+
+Al parecer Astro asume que estás usando algo y te pone las opciones de NanoStore con ese algo. Sin embargo, en mi caso no quería usar nada. Al final terminé dando mi brazo a torcer, tragarme mi orgullo y no hacerlo con Vanilla JS. 
+
+Moraleja: a veces es mejor usar alguna dependencia que quererlo hacer todo con Vanilla JS, por muy sencillo que parezca lo que quieres hacer, el tiempo es oro.
+
+Sé que, en especial cuando inicias, quieres aprenderlo todo y hacerlo todo “a mano”. Por miedo de ignorar “los cómos” y caer en simplemente instalar algo que haga tal cosa. Crees que eso no es programar. Pero en tiempos modernos, la productividad es el rey, no hay que tener miedo a usar “herramientas” para facilitar nuestra tarea.
+
+Ojo, tampoco se trata de instalar una dependencia pesada para hacer algo que se puede hacer con API nativa del navegador, como es el caso de fech con Axios.
+
+Saludos.
