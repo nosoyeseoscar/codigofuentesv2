@@ -8,7 +8,7 @@ tags: ['Reseñas', 'Codear']
 author: 'Oscar Fuentes'
 ---
 
-# [Exercism](https://exercism.org/)
+## [Exercism](https://exercism.org/)
 
 Ésta página te permite aprender mientras prácticas, lo cual resulta conveniente cuando estás incursionando en un lenguaje que no dominas, pero si ya eres todo un master y quieres solo practicar también lo puedes hacer sin meterte en las lecciones.
 
