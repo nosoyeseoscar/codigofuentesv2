@@ -1,5 +1,5 @@
 ---
-title: 'La practica hace al maestro'
+title: 'La práctica hace al maestro'
 description: 'Si quieres programar tienes que programar, punto'
 pubDate: '2024-04-16T17:25:37.441Z'
 heroImage: '/blogImages/la_practica.webp'

@@ -42,7 +42,7 @@ Mientras vas aprendiendo los temas, puedes entrar a links donde se te explican a
 
 El sistema de medallas y logros no es tan adictivo como otros sitios, de hecho es muy sencillo, lo cual puede provocar que mate un poco tus ganas de seguir avanzando.
 
-Pros:
+**Pros:**
 
 - Perfecta para aprender un nuevo lenguaje.
 - La interfaz es limpia y en general fácil de seguir, el diseño cumple.
@@ -53,7 +53,7 @@ Pros:
 - La dificultad se va adaptando a tu nivel.
 - No hay presiones ni penalizaciones por cantidad de intentos o tiempo gastado.
 
-Cons:
+**Cons:**
 
 - Editor integrado sin autocompletado y con pocas “ayudas”.
 - El debugging, a mi parecer, es más complicado que otros sitios.
@@ -61,6 +61,6 @@ Cons:
 - El sistema de reputación es muy básico.
 - No recibes ningún extra por acierto a la primera o tiempo de solución.
 
-Calificación ⭐⭐⭐⭐ de 5.
+**Calificación ⭐⭐⭐⭐ de 5.**
 
 Si su editor integrado fuera mejor y tuvieras un área donde todo el tiempo se muestre la salida de consola sería un 5/5. En general un buen sitio para aprender un nuevo lenguaje de programación cuando ya tienes ciertas bases de programación.
