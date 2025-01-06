@@ -22,7 +22,9 @@ Así que vamos a seguir la ola y ver a dónde nos lleva. Siempre es bueno conoce
 
 En lo personal, solo he usado Python para realizar un intento fallido de *web scraping*. La página de donde pensaba sacar info tenía cierta seguridad anti-bots, así que no continué con ese proyecto. 
 
-Y un par de scripts míos para juntar y “aplanar” PDFs los cuales realicé usando ChatGPT. Estos hacen su trabajo, aunque supongo que el de “aplanado” se puede realizar mejor. Ya que el aplanado lo hago extrayendo las hojas del PDF, las transformo en JPEG y después las vuelvo a convertir a PDF. Lo anterior para que todo lo “extra” que traiga el PDF sea parte del mismo y no se pueda “modificar”. Esto es algo que necesito en mi día a día, así que no creo que muchos le encuentren lógica. 
+También un par de scripts míos para juntar y “aplanar” PDFs los cuales realicé usando ChatGPT. Estos hacen su trabajo, aunque supongo que el de “aplanado” se puede realizar mejor. Ya que el aplanado lo hago extrayendo las hojas del PDF, las transformo en JPEG y después las vuelvo a convertir a PDF. Lo anterior para que todo lo “extra” que traiga el PDF sea parte del mismo y no se pueda “modificar”. Esto es algo que necesito en mi día a día, así que no creo que muchos le encuentren lógica. 
+
+Además, como he querido incursionar en la Ciencia de Datos, pues es como "el lenguaje" a aprender, así que sí, tengo algo de experiencia.
 
 ### ¿Dónde aprender?
 
