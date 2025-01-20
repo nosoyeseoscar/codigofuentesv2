@@ -1,0 +1,91 @@
+---
+title: "Usando WSL para desarrollo en Python"
+description: "Tips para usar WSL para desarrollo en Python"
+pubDate: "2025-01-20T22:08:21.298Z"
+heroImage: '/blogImages/intallPythonOnWSL.webp'
+categories: ['Tips','Programación','Python']
+tags: ['Tips','Programación','Python', 'WSL']
+author: 'Oscar Fuentes'
+---
+
+## Y no morir en el intento.
+
+Como ya les había comentado, éste año dentro de todos los propósitos que tengo, está el aprender bien **Python**. Y como ya también les había contado, no quiero caer en el Tutorial Hell. Motivo por el cual me dispuse a realizar un rápido proyecto personal, algo simple para practicar y hacer algo de BackEnd el cual tengo algo olvidado.
+
+Decidí usar una base de datos distribuida que se basa en **libSQL**, una bifurcación de **SQLite**, llamada [Turso](https://turso.tech/), la cual tiene un plan gratuito bastante generoso que sin problemas serviría para mi proyecto.
+
+Y ahí venía el primer problema, al parecer la librería libSQL en Python no se lleva bien con Windows, que es el S.O. que normalmente uso. Me marcaba varios errores, los cuales al parecer a las respuestas de los foros y a los tickets de GitHub, es culpa de Windows.
+
+Dejándome tres opciones para usar Turso en el sistema de Redmond:
+
+1. Optar por otro lenguaje, lo cual quitaría totalmente el propósito de mi ejercicio.
+2. Usar la versión HTTP de Turso y combinarlo con algún cliente HTTP en Python que no marque error en Windows. Lo cual hubiera sido algo “vago” pero válido, de hecho es posible que lo implemente en un futuro.
+3. Y la última, usar **Windows Subsystem for Linux** (WSL) y de ahí desarrollar con la librería “oficial”.
+
+Opté por esta última. Debido a que leí en todos esos foros en los cuales me arrastré buscando respuestas que es de lo mejor, desarrollar en Python usando Linux. Dicha decisión me llevaría a nuevos problemas. Instalar WSL no es tan complicado, de hecho cada vez se vuelve más fácil. Sin embargo, si quiero darte unos tips para que no pierdas toda la mañana como yo tratando a penas de empezar.
+
+Primero, una vez instalado WSL y su distro default (**Ubuntu**) actualiza todo, es decir corre el comando:
+
+```console
+sudo apt-get update
+```
+
+(obvio, todo dentro de WSL)
+
+Una vez que tu Ubuntu esté actualizado, ya tendremos actualizado nuestro Python, pero también se recomienda instalar las librerías de desarrollo, así que tecleamos en el WSL:
+
+```console
+sudo apt-get install libpython3-dev
+```
+
+Posteriormente, y para mantener buenas prácticas programando en Python, debemos trabajar con “ambientes virtuales”, los cuales se logran usando python3-venv, el cual instalamos:
+
+```console
+sudo apt-get install python3-venv
+```
+
+Como comentario al margen, si quieres usar ambientes virtuales de Python en Windows, al parecer tiene muchas dependencias que usar de **Rust**, por lo cual te recomiendo instalarlo antes. Ojo, como estamos usando WSL no lo ocupamos, pero en caso de que estés desarrollando en python en Win, pues ya sabes.
+
+Y antes de continuar, necesitamos instalar PIP, el cual es el instalador de paquetes de Python, que por alguna extraña razón, no viene por default en el WLS. No importa, lo instalamos usando:
+
+```console
+sudo apt install python-pip
+```
+
+Ya de aquí estamos listos para empezar a desarrollar, pero antes te recomiendo tener en cuenta lo siguiente. WSL como ya te podrás imaginar, crea un ambiente Linux dentro de tu Windows, y como todo Linux, tiene un sistema de archivos diferente a tu Win. Por lo tanto, debes de tener esto en cuenta. 
+
+Para que no se te haga tan rara la cosa, te recomiendo cerrar tu ventana de terminal, abrirla otra vez, dirigirte con el comando “CD” a la carpeta donde normalmente desarrollas, supongamos “*C:\dev\python*” y desde ahí, correr el comando “*wsl*”. 
+
+Con lo anterior, ya estarás trabajando desde WSL en la carpeta en la que normalmente desarrollamos, sin mucho esfuerzo.
+
+En WSL y en la carpeta donde vamos a crear el proyecto, creamos de una vez el ambiente virtual, tecleando:
+
+```console
+python3 -m venv env
+```
+
+Como ya te dije es buena práctica que cada proyecto tenga su ambiente virtual, por lo cual es deseable trabajar así. Con éste comando creamos un ambiente virtual llamado “venv”, al cual le puedes cambiar el nombre por lo que quieras, pero es una convención usarlos así.
+
+Ya creado, lo activamos:
+
+```console
+source ./venv/bin/activate
+```
+
+Y notaremos como algo cambia en nuestro prompt, ojo en Windows se activan diferente. 
+
+Y ahora sí, instalamos la mentada librería libsql así (ojo en la misma carpeta del proyecto):
+
+```console
+pip install libsql-experimental
+```
+
+La cual si tenemos todo correctamente instalado, no debe marcar ningún error y ahora sí, empezar a desarrollar.
+
+Si no has cerrado la terminal donde has tecleado todo lo anterior, te recomiendo activar tu VS Code desde ahí, es decir desde WSL en la carpeta del proyecto, con el clásico “code .”
+
+Lo anterior, activará una instalación de VS Code local para el WSL, ojo aquí, te recomiendo la [siguiente lectura](https://learn.microsoft.com/es-es/windows/wsl/tutorials/wsl-vscode), ya que hay que tener consideraciones la hora de trabajar con WSL y VS Codem. Entre ellas instalar **GIT** en WSL y usar uno o dos plugins más y reactivar algunos. 
+
+Como ves, no es tan sencillo usar WSL para desarrollo, o cuando menos tienes que tener cuidado en muchas cosas. Claro, una vez que tengas todo instalado tus siguientes desarrollos serán más sencillos. Aunque tal vez muchos no quieran reinstalar todo en Linux para realizar un simple proyecto personal. Así que te ahorras algo de tiempo leyendo un poco de mi experiencia.
+
+Feliz codeo. 
