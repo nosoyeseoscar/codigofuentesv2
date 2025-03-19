@@ -2,9 +2,9 @@
 
 Blog personal donde plasmo mis ideas, descubrimientos y demás relacionado (la mayoría del tiempo) con el mundillo Tech, Programación, Desarrollo Web, Front y Back y en general cualquier cosa que me cause curiosidad. Basado en EV0 Astro Theme.
 
-## 🚀 Getting Started
+## 🚀 Como iniciar
 
-Clone this repository to your local machine using Git.
+Clona este repositorio a tu equipo local usando Git.
 
 ```scheme
 git clone https://github.com/gndx/ev0-astro-theme.git your-project-name
@@ -19,4 +19,4 @@ git clone https://github.com/gndx/ev0-astro-theme.git your-project-name
 | `npm run youtube` | Fetches the Latest YouTube Channel Videos    |
 | `npm run newpost` | Generate a New Blogpost Markdown Entry       |
 
-Edit the HTML files in the `src/pages` directory to add your projects, experiences, and personal information.
+Edita los archivos HTML en el directorio `src/pages` para agregar tus proyectos, experiencias e información personal.
