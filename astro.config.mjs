@@ -15,7 +15,7 @@ export default defineConfig({
     remotePatterns: [{ protocol: 'https' }],
   },
   markdown: {
-    drafts: true,
+   /*  drafts: true, */
     shikiConfig: {
       theme: 'material-theme-palenight',
       wrap: true,
@@ -28,7 +28,7 @@ export default defineConfig({
         theme: 'material-theme-palenight',
         wrap: true,
       },
-      drafts: true,
+      /* drafts: true, */
     }),
     Compress(),
     sitemap(),
