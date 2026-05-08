@@ -60,5 +60,8 @@
     "prettier-plugin-tailwindcss": "0.5.7",
     "tailwindcss": "3.3.5",
     "vite-plugin-pwa": "0.20.0"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5"
   }
 }
