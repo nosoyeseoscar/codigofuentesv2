@@ -8,7 +8,7 @@ import { createOgImage } from "@utils/createOgImage";
 
 import "@styles/global.css";
 
-import { ViewTransitions } from "astro:transitions";
+//import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -100,7 +100,7 @@ const ogImage = createOgImage({
 
     <script is:inline src="/registerSW.js"></script>
     <link rel="manifest" href="/manifest.webmanifest" />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </head>
   <body class="dark:bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:text-slate-100">
     <Header />
